@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+</head>
+<body>
+    <h1>Password Generator</h1>
+    <p>select what do you want to include to your password</p>
+
+    <label for="passwordLength">Your password length value</label>
+    <input type="number" placeholder="0" min="8" value="8" id="passwordLength"><br>
+
+    <input type="checkbox" name="lowerCase" id="lowerCase">
+    <label for="lowerCase">lower case</label> <br>
+
+    <input type="checkbox" name="upperCase" id="upperCase">
+    <label for="upperCase">upper Case</label> <br>
+
+    <input type="checkbox" name="numCase" id="numCase">
+    <label for="numCase">Number Case</label> <br>
+
+    <input type="checkbox" name="symbolCase" id="symbolCase">
+    <label for="symbolCase">Symbol Case</label> <br>
+
+    <button type="button" onclick="generatePwd()">Generate</button>
+
+    <h1 id="generatedPassowrd"></h1>
+
+
+    <script src="index.js"></script>
+</body>
+</html> 
