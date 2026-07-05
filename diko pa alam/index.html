@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+    <form id="productForm">
+        <h2>Add Product</h2>
+
+        <label for="productType">Product Type</label>
+        <input type="text" name="productType" id="productType" required/><br><br>                  
+      
+
+        <label for="productName">Product Name</label>
+        <input type="text" name="productName" id="productName" required/><br><br>  
+
+        <label for="productPrice">Product Price</label>
+        <input type="number" min="1" name="productPrice" id="productPrice" required/><br><br>
+      
+        <label for="productTax">Product Tax</label>
+        <input type="number" min="1" name="productTax"   max="10" id="productTax" required/><br><br>
+
+        <label for="productStocks">Product Stocks</label>
+        <input type="number" min="1" name="productStocks" id="productStocks" required/><br><br>
+        
+        <button type="button" onclick="addItems()">Add Product</button>
+    </form>
+    </div>
+
+
+    <div> 
+        <div id="availableItem">
+          <h2 id="warning"></h2>
+          
+          <h1 id="availableProduct"></h1>
+
+
+          
+
+
+        </div>
+    
+    </div>
+            <script src="index.js"></script>          
+  </body>
+</html> 
