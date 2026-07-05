@@ -22,8 +22,15 @@ class product {
             return this.productPrice +  (this.productPrice * this.productTax);    
         }
 
-    }
+        availability (){
+            return this.productStocks > 0
+                ? 'available' 
+                : 'out of stock';
 
+        }
+
+
+    }
 
 
 
@@ -36,7 +43,6 @@ function addItems() {
     const warning = document.getElementById("warning");
     
 
-    const productForm = document.getElementById("productForm").reset();
 
 
         if (
@@ -60,13 +66,34 @@ function addItems() {
 
     productsData.push(productValue);
 
-
+    availableProduct();
     // testProduct1.displayProduct();
+
+    const productForm = document.getElementById("productForm").reset();
 
 }
 
 
+function availableProduct (){
+    const availableItem = document.getElementById("availableItem");
+    
+    
+    availableItem.innerHTML = "<h2>available items</h2>";
+    
+    for (let product of productsData) {
 
+    availableItem.innerHTML += `
+        <div>
+                <p>Name: ${product.productName}</p>
+                <p>Stock: ${product.productStocks}</p>
+                <p>Total: ₱${product.calculatedTotal().toFixed(2)}</p>
+                <p>Status: ${product.availability()}</p>
+                <button type="button" onclick="buyItem()">Buy</button>
+                <hr>
+        </div>
+    `;
 
-const availableProduct = document.getElementById("availableProduct");     
-    availableProduct.textContent = "Available Products ";  
+    }
+
+}
+
