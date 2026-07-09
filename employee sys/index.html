@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+</head>
+<body>
+    
+
+    <form action="" id="regisForom">
+        <h2>Employee regis</h2>
+
+        <label for="employeeName">Full Name : </label>
+        <input type="text" id="employeeName"><br>
+
+        <label for="employeeAge">Age : </label>
+        <input type="number" id="employeeAge"><br>
+        
+        <label for="employeeSalary">Salary : </label>
+        <input type="number" id="employeeSalary"><br>
+
+        <select name="emmployeeType" id="emmployeeType">
+            <option value="">==Select==</option>
+            <option value="Manager">Manager</option>
+            <option value="Software Developer">Software Developer</option>
+        </select><br>
+
+        <button type="button" onclick="submitEntry()">Submit</button>
+
+        <h3 id="warningMsg"></h3>
+    </form>
+
+    <div id="displayEmployee">
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
