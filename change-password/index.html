@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="">
+        <h1>change password</h1>
+
+        <div class="inputHandler">
+        <label for="changePw">Password:</label>
+        <input type="password" id="changePw"><br>
+        <input type="checkbox" id="seePw">
+        
+        <p class="errorHandler" id="pwRequired">Password required</p><!--Password required-->
+        <p class="errorHandler" id="pwLength">Password must be at least 8 characters long.</p><!--Password must be at least 8 characters long.-->
+        <p class="errorHandler" id="pwUpper">Password must contain at least one uppercase letter.</p><!--Password must contain at least one uppercase letter.-->
+        <p class="errorHandler" id="pwSpecial">One special characters (!@#$%^&&*)</p><!--One special characters (!@#$%^&&*)-->
+        <p class="errorHandler" id="pwNum">atleast one number(0-9)</p><!--atleast one number(0-9)-->
+        </div>
+        
+        <button type="button" onclick="newPass()">Continue</button>
+    </form>
+    
+    <script src="index.js"></script>
+</body>
+</html>
