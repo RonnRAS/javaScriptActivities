@@ -29,24 +29,13 @@ function createAcc() {
         return true;
     }
 
-    function validateInput(input, rules) {
-        const value = input.value.trim();
 
-        if (rules.required && value === "") {
-            showError(input, `${rules.prop} is required.`);
-            return false;
-        }
-
-        showSuccess(input);
-        return true;
-    }
     let valid = true;
-    valid = valid && validateInput(firstName, { prop: "Firstname", required: true, minLength: 2 });
+    valid &= validateInput(firstName, { prop: "Firstname", required: true, minLength: 2 });
 
     if (!valid) {
         return;
     }
-
 
     try {
 

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Registration</h1>
+
+    <form action="">
+      <div class="inputHandler">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" /><br />
+        <p class="errorHandler"></p>
+      </div>
+
+      <div class="inputHandler">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" /><br />
+        <p class="errorHandler"></p>
+      </div>
+      <div class="inputHandler">
+        <input type="radio" value="Male" id="male" name="userSex" />
+        <label for="admin">Male</label>
+
+        <input type="radio" value="Female" id="female" name="userSex" />
+        <label for="user">Female</label>
+        <p class="errorHandler"></p>
+      </div>
+
+      <div class="inputHandler">
+        <label for="email">Email</label>
+        <input type="email" id="email" /><br />
+        <p class="errorHandler"></p>
+      </div>
+
+      <div class="inputHandler">
+        <input type="radio" value="admin" id="admin" name="userType" />
+        <label for="admin">Admin</label>
+
+        <input type="radio" value="user" id="user" name="userType" />
+        <label for="user">User</label>
+        <p class="errorHandler"></p>
+      </div>
+
+      <div class="inputHandler">
+        <label for="password">Password</label>
+        <input type="password" id="userPw" />
+        <input type="checkbox" id="seePw" /><br />
+        <p class="errorHandler" id="pwRequired">�Password is required.</p>
+        <p class="errorHandler" id="pwLength">
+          �Password must be at least 8 characters long.
+        </p>
+        <p class="errorHandler" id="pwUpper">
+          �Password must contain at least one uppercase letter.
+        </p>
+      </div>
+
+      <button type="button" onclick="regisAcc()">Register Account</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
