@@ -25,12 +25,23 @@ function regisAcc() {
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
     const radioSex = document.querySelector('input[name="userSex"]:checked');
+    const male = document.getElementById("male");
     const email = document.getElementById("email");
     const radioType = document.querySelector('input[name="userType"]:checked');
+    const admin = document.getElementById("admin");
     const password = document.getElementById("userPw");
 
 
+
     function checkInput(input, rules) {
+        if (rules.radio) {
+            if (!rules.selected) {
+                showError(input, false, `${rules.properties} select one value`);
+                return false;
+            }
+            showError(input, true, "");
+            return true;
+        }
 
         const value = input.value.trim();
 
@@ -49,6 +60,25 @@ function regisAcc() {
             }
         }
 
+        if (rules.minLength && value.length < rules.minLength) {
+            showError(input, false, `${rules.properties} must be at least ${rules.minLength} characters long.`);
+            return false;
+        }
+
+        if (rules.upperCase) {
+            if (!/[A-Z]/.test(value)) {
+                showError(input, false, "Password must contain at least one uppercase letter.");
+                return false;
+            }
+        }
+
+        if (rules.haveNum) {
+            if (!/[0-9]/.test(value)) {
+                showError(input, false, "At least one number(0-9)");
+                return false;
+            }
+        }
+
         showError(input, true, "");
         return true;
     }
@@ -58,7 +88,10 @@ function regisAcc() {
     valid &= checkInput(firstName, { properties: "Firstname", required: true, minLength: 2, lettersOnly: true });
     valid &= checkInput(lastName, { properties: "Lastname", required: true, minLength: 2, lettersOnly: true });
     valid &= checkInput(email, { properties: "Email", required: true, email: true });
-    valid &= checkInput(password, { properties: "Password", required: true, minLength: 8, upperCase: true });
+    valid &= checkInput(password, { properties: "Password", required: true, minLength: 8, upperCase: true, haveNum: true });
+
+    valid &= checkInput(male, { properties: "Sex", required: true, radio: true, selected: radioSex });
+    valid &= checkInput(admin, { properties: "Type", required: true, radio: true, selected: radioType });
 
 
 }
