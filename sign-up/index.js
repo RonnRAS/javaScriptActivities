@@ -47,6 +47,7 @@ function createAcc() {
             return false;
         }
 
+
         showSuccess(input);
         return true;
     }
@@ -55,6 +56,6 @@ function createAcc() {
     valid &= validateInput(firstName, { prop: "Firstname", required: true, minLength: 2 });
     valid &= validateInput(lastName, { prop: "Lastname", required: true, minLength: 2 });
     valid &= validateInput(email, { prop: "Email", required: true, email: true });
-    valid &= validateInput(pWord, { prop: "Password", required: true, minLength: 8 });
+    valid &= validateInput(password, { prop: "Password", required: true, minLength: 8, upperCase: true });
 
 }

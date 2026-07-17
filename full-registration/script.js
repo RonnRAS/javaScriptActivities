@@ -83,6 +83,8 @@ function regisAcc() {
         return true;
     }
 
+
+
     let valid = true;
 
     valid &= checkInput(firstName, { properties: "Firstname", required: true, minLength: 2, lettersOnly: true });
@@ -93,5 +95,57 @@ function regisAcc() {
     valid &= checkInput(male, { properties: "Sex", required: true, radio: true, selected: radioSex });
     valid &= checkInput(admin, { properties: "Type", required: true, radio: true, selected: radioType });
 
+    try {
+        if (!valid) {
+            return;
+        }
 
+
+        const throwData = new User(
+            firstName.value,
+            lastName.value,
+            radioSex.value,
+            email.value,
+            radioType.value,
+            password.value
+        );
+        userData.push(throwData);
+        const regisForm = document.getElementById("regis-form").reset();
+        showSuccessToast("Account registered successfully!");
+    }
+    catch (error) {
+        alert("error");
+    }
+
+}
+
+class User {
+    constructor(firstName, lastName, radioSex, email, radioType, password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.radioSex = radioSex;
+        this.email = email;
+        this.radioType = radioType;
+        this.password = password;
+    }
+}
+
+const userData = [];
+console.log(userData);
+
+
+function showSuccessToast(message, duration = 3000) {
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerHTML = `✅ ${message}`;
+    document.body.appendChild(toast);
+
+    // Trigger slide-in
+    requestAnimationFrame(() => toast.classList.add("show"));
+
+    // Auto-remove after duration
+    setTimeout(() => {
+        toast.classList.remove("show");
+        toast.addEventListener("transitionend", () => toast.remove());
+    }, duration);
 }
