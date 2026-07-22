@@ -54,8 +54,16 @@ function regisAcc() {
             return false;
         }
         if (rules.email) {
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(value)) {
                 showError(input, false, "Please enter a valid email domain (e.g., @gmail.com).");
+                return false;
+            }
+        }
+        if (rules.emailExists) {
+            const exists = userData.some(user => user.email.toLowerCase() === user.email.toLowerCase());
+
+            if (exists) {
+                showError(input, false, "Email is already registered.");
                 return false;
             }
         }
@@ -89,7 +97,7 @@ function regisAcc() {
 
     valid &= checkInput(firstName, { properties: "Firstname", required: true, minLength: 2, lettersOnly: true });
     valid &= checkInput(lastName, { properties: "Lastname", required: true, minLength: 2, lettersOnly: true });
-    valid &= checkInput(email, { properties: "Email", required: true, email: true });
+    valid &= checkInput(email, { properties: "Email", required: true, email: true, emailExists: true });
     valid &= checkInput(password, { properties: "Password", required: true, minLength: 8, upperCase: true, haveNum: true });
 
     valid &= checkInput(male, { properties: "Sex", required: true, radio: true, selected: radioSex });
