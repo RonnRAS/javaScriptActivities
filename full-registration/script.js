@@ -110,27 +110,37 @@ function regisAcc() {
             password.value
         );
         userData.push(throwData);
+        addTable();
         const regisForm = document.getElementById("regis-form").reset();
         showSuccessToast("Account registered successfully!");
     }
     catch (error) {
         alert("error");
+        console.log(error);
     }
 
 }
 
 class User {
     constructor(firstName, lastName, radioSex, email, radioType, password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = firstName
+            .split(" ")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(" ");
+        this.lastName = lastName
+            .split(" ")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(" ");
         this.radioSex = radioSex;
         this.email = email;
         this.radioType = radioType;
         this.password = password;
     }
+
 }
 
-const userData = [];
+
+const userData = []; // receiver ng inputs
 console.log(userData);
 
 
@@ -149,3 +159,28 @@ function showSuccessToast(message, duration = 3000) {
         toast.addEventListener("transitionend", () => toast.remove());
     }, duration);
 }
+
+
+
+// tables 
+
+const table = document.getElementById("usersList");
+console.log(table);
+function addTable() {
+
+    table.innerHTML = "";
+    for (let datas of userData) {
+        table.innerHTML += `
+        <tr>
+            <td>${datas.firstName}</td>
+            <td>${datas.lastName}</td>
+            <td>${datas.radioSex}</td>
+            <td>${datas.email}</td>
+            <td>${datas.radioType}</td>
+            <td>${datas.password}</td>
+            </tr>
+    `;
+    }
+
+}
+
