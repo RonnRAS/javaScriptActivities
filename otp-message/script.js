@@ -41,7 +41,7 @@ function validatesOTP(){
     let Code = "";
 
     for (const input of otpInputs) {
-        if (input.value.trim() == "") {
+        if (Number(input.value.trim()) == "") {
             otpShowError.textContent = "OTP is required.";
             return false;
 
@@ -53,9 +53,16 @@ function validatesOTP(){
         otpShowError.textContent = "OTP must contain only numbers.";
         return false;
     }
-    // if (otpCode === OTP ) receive the code and validates if its correct
+    if (Number(Code) !== otpCode) {
+        otpShowError.textContent = "Invalid OTP. Please try again.";
+        return false;
+    }
+    // if (Code === otpCode ){
+    //    
+    // } receive the code and validates if its correct
     // showError(input, false, "Invalid OTP. Please try again.");
-    errorHandler.textContent = "";
+    
+    otpShowError.textContent = "";
     return Code;
 }
 
@@ -124,5 +131,31 @@ otpBox.forEach((input, index) =>{
 function submitCode(){
     const Code = validatesOTP();
     if (!Code) return;
+
+    showSuccessToast("OTP GOOD NIICE!!!");
     console.log(Code);
+}
+
+// creeating a rondom 6 numbers
+const otpCode = Math.floor(100000 + Math.random() * 900000);
+
+console.log(otpCode);
+
+
+
+// success message
+function showSuccessToast(message, duration = 3000) {
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerHTML = `✅ ${message}`;
+    document.body.appendChild(toast);
+
+    // Trigger slide-in
+    requestAnimationFrame(() => toast.classList.add("show"));
+
+    // Auto-remove after duration
+    setTimeout(() => {
+        toast.classList.remove("show");
+        toast.addEventListener("transitionend", () => toast.remove());
+    }, duration);
 }
