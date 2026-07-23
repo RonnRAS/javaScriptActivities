@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #f5f7fa;
+      }
+      .otp-input {
+        width: 48px;
+        height: 52px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-align: center;
+        border: 2px solid #dee2e6;
+        border-radius: 10px;
+        transition: border-color 0.2s;
+      }
+      .otp-input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 3px rgba(13,110,253,.2);
+        outline: none;
+      }
+      .errorHandler {
+        min-height: 1.2em;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+        color: red;
+      }
+    </style>
+  </head>
+  <body class="min-vh-100 d-flex align-items-center justify-content-center">
+
+    <div class="d-flex flex-column gap-4" style="width: 100%; max-width: 420px;">
+
+      <!-- Email Verify Form -->
+      <form class="emailVerifyForm card border-0 shadow-sm rounded-4 p-4" id="emailVerifyForm">
+        <div class="text-center mb-3">
+          <div class="fs-1">📧</div>
+          <h5 class="fw-bold mb-1">Email Verification</h5>
+          <p class="text-muted small mb-0">Enter your email to continue.</p>
+        </div>
+        <div class="inputHandler mb-3">
+          <label for="email" class="form-label fw-semibold small text-uppercase text-secondary">Email</label>
+          <input type="email" id="email" name="email" class="form-control form-control-lg rounded-3" placeholder="you@gmail.com" />
+          <p class="errorHandler"></p>
+        </div>
+        <button type="button" onclick="checksEmail()" class="btn btn-primary btn-lg w-100 rounded-3 fw-bold">Next →</button>
+      </form>
+
+      <!-- OTP Form -->
+      <form id="otpForm" class="otpForm card border-0 shadow-sm rounded-4 p-4">
+        <div class="text-center mb-3">
+          <div class="fs-1">🔐</div>
+          <h5 class="fw-bold mb-1">OTP Verification</h5>
+          <p class="text-muted small mb-0">Enter the 6-digit code sent to your email.</p>
+        </div>
+        <div class="inputHandler">
+          <div class="otp-box d-flex justify-content-center gap-2 mb-2">
+            <input maxlength="1" class="otp-input" />
+            <input maxlength="1" class="otp-input" />
+            <input maxlength="1" class="otp-input" />
+            <input maxlength="1" class="otp-input" />
+            <input maxlength="1" class="otp-input" />
+            <input maxlength="1" class="otp-input" />
+          </div>
+          <p class="errorHandler"></p>
+        </div>
+        <button type="button" onclick="submitCode()" class="btn btn-success btn-lg w-100 rounded-3 fw-bold mt-2">Submit</button>
+      </form>
+
+      <!-- Success -->
+      <div class="successOtpVerify"></div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
