@@ -41,19 +41,20 @@ function validatesOTP(){
     let Code = "";
 
     for (const input of otpInputs) {
-        if (Number(input.value.trim()) == "") {
+        if (input.value.trim() == "") {
             otpShowError.textContent = "OTP is required.";
             return false;
 
 
         }
-        Code += input.value;
+        Code += Number(input.value);
     }
     if (!/^\d{6}$/.test(Code)) {
         otpShowError.textContent = "OTP must contain only numbers.";
         return false;
     }
-    if (Number(Code) !== otpCode) {
+    console.log("Entered:", Code);
+    if (Number(Code) !== Number(otpCode)) {
         otpShowError.textContent = "Invalid OTP. Please try again.";
         return false;
     }
@@ -85,12 +86,16 @@ function checksEmail() {
             return;
         }
 
+
     emailVerifyForm.style.display = "none";
     otpForm.style.display = "block";
         
         const throwEmail = new Email (
             email.value,
         );
+    // creeating a rondom 6 numbers
+    otpCode = Math.floor(100000 + Math.random() * 900000);
+    console.log(otpCode);
 
         userEmail.push(throwEmail);
         emailVerifyForm.reset();
@@ -133,15 +138,9 @@ function submitCode(){
     if (!Code) return;
 
     showSuccessToast("OTP GOOD NIICE!!!");
+    otpForm.reset();
     console.log(Code);
 }
-
-// creeating a rondom 6 numbers
-const otpCode = Math.floor(100000 + Math.random() * 900000);
-
-console.log(otpCode);
-
-
 
 // success message
 function showSuccessToast(message, duration = 3000) {
@@ -159,3 +158,5 @@ function showSuccessToast(message, duration = 3000) {
         toast.addEventListener("transitionend", () => toast.remove());
     }, duration);
 }
+
+let otpCode = "";
